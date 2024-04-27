@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sentiment Analysis</title>
+    <link rel="stylesheet" href="..//static/style.css" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <header>User Inputs(s)</header>
+      <!-- Single Review Analysis -->
+      <div class="input">
+        <label class="title">Single Review Analysis</label> <br />
+        <label class="review" for="review">Enter a single review below:</label>
+
+        <textarea
+          id="userInput"
+          onkeyup="analyzeSentiment(event)"
+          name="singleReview"
+          onkeypress="auto_grow(this);"
+          onkeyup="auto_grow(this);"
+          cols="30"
+          rows="1"
+          style="height: 20px"
+        ></textarea>
+
+        <script>
+          const csrftoken = "{{ csrf_token }}";
+          const userInput = document.getElementById("userInput");
+          function analyzeSentiment(event) {
+            const text = event.target.value;
+            const positiveEmoji = "\uD83D\uDE0A";
+            const negativeEmoji = "\uD83D\uDE21";
+            const neutralEmoji = "\uD83D\uDE10";
+
+            fetch("/analyze/", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "X-CSRFToken": csrftoken,
+              },
+              body: `text=${text}`,
+            })
+              .then((response) => response.text())
+              .then((sentiment) => {
+                if (sentiment == 0) {
+                  sentiment = "Negative Comment" + negativeEmoji;
+                } else if (sentiment == 2) {
+                  sentiment = "Positive Comment" + positiveEmoji;
+                } else {
+                  sentiment = "Neutral Comment" + neutralEmoji;
+                }
+                if (text == "") {
+                  sentiment = "Prediction";
+                }
+
+                document.getElementById("prediction").textContent = sentiment;
+              })
+              .catch((error) => console.error(error));
+          }
+
+          function auto_grow(element) {
+            element.style.height = "5px";
+            if (element.scrollHeight <= 128) {
+              element.style.height = element.scrollHeight + "px";
+            } else {
+              element.style.height = 128 + "px";
+            }
+          }
+        </script>
+
+        <!-- Multiple Review Analysis -->
+
+        <label class="title">Multiple Review Analysis</label>
+        <label class="uploadLabel" for="fileUpload">Upload a CSV file:</label>
+
+        <div class="upload">
+          <header>Drag & Drop to Upload File</header>
+          <span>OR</span>
+          <button>browse file</button>
+          <input type="file" hidden />
+        </div>
+      </div>
+      <p>
+        This project was made for my university AIU by my team: Mohamed Elbadry,
+        Nada Ibrahim, and Mohamed Mostafa for machine learning.
+      </p>
+    </div>
+
+    <div class="main-content">
+      <div class="project-info">
+        <h1>Sentiment Analysis Project</h1>
+        <p>
+          This sentiment analysis project utilizes machine learning for powerful
+          text analysis. Built with Python, it leverages scikit-learn's Logistic
+          Regression model to classify sentiment (positive, negative, or
+          neutral) from user-provided text. NLTK helps with text pre-processing,
+          while Django forms the robust backend and AJAX enables real-time
+          communication for a seamless user experience.
+        </p>
+        <label id="prediction">Prediction:</label>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,148 @@
+body {
+  font-family: "Cairo", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 650;
+  padding: 0px;
+  margin: 0;
+
+  background-color: #f2f2f2;
+}
+
+.sidebar {
+  position: fixed;
+  width: 250px;
+  height: 100%;
+
+  background-color: #042331;
+}
+
+.sidebar > header {
+  font-size: 22px;
+  color: white;
+  text-align: center;
+  line-height: 70px;
+  background-color: #063146;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.sidebar .title {
+  font-weight: 300;
+  font-size: 20px;
+}
+
+.sidebar .input {
+  display: block;
+  width: 100%;
+  line-height: 40px;
+  font-size: 15px;
+  color: white;
+  padding-left: 10px;
+  padding-top: 50px;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.sidebar .review {
+  font-size: 14px;
+  font-weight: 300;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.sidebar .input textarea {
+  margin-top: 20px;
+  background-color: #2c5264;
+  width: 90%;
+  font-size: 17px;
+  color: white;
+  resize: none;
+  overflow: hidden;
+  outline: none;
+  border: none;
+  cursor: text;
+}
+
+.sidebar .input .upload {
+  margin-top: 20px;
+  line-height: 35px;
+  background-color: #2c5264;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  border-radius: 9px;
+  font-size: medium;
+  font-weight: 200;
+
+  width: 90%;
+
+  height: 200px;
+}
+
+.sidebar .upload.active {
+  border: 2px solid #fff;
+}
+.sidebar .upload span {
+  font-size: 22px;
+  font-weight: 500;
+  color: #fff;
+  margin: -2px 0 15px 0;
+}
+.sidebar .upload button {
+  font-size: 18px;
+  font-weight: 200;
+  border: none;
+  outline: none;
+  color: #4788a7;
+  background-color: transparent;
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+.sidebar .upload button:hover {
+  color: #fff;
+}
+
+.sidebar p {
+  color: white;
+  font-size: 14px;
+  padding: 10px;
+  text-align: center;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-weight: 200;
+}
+.sidebar .uploadLabel {
+  font-size: 14px;
+  font-weight: 300;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.project-info {
+  max-width: 1000px;
+  text-align: left;
+  margin: 0 auto;
+  font-size: 30px;
+  line-height: 30px;
+}
+
+.project-info h1 {
+  margin-bottom: 40px;
+  font-size: 70px;
+}
+
+.project-info p {
+  margin-bottom: 40px;
+  font-weight: 340;
+  font-size: 20px;
+}
+.main-content {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1; /* Take up remaining space */
+  align-items: center; /* Center vertically */
+  height: 100vh; /* Make the body fill the viewport height */
+
+  padding: 20px; /* Add some padding for spacing */
+}
