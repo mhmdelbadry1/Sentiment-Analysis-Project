@@ -12,7 +12,7 @@ body {
   position: fixed;
   width: 250px;
   height: 100%;
-
+overflow: auto;
   background-color: #042331;
 }
 
@@ -56,7 +56,7 @@ body {
   font-size: 17px;
   color: white;
   resize: none;
-  overflow: hidden;
+  overflow: auto;
   outline: none;
   border: none;
   cursor: text;
@@ -106,7 +106,7 @@ body {
 
 .sidebar p {
   color: white;
-  font-size: 14px;
+  font-size: 10px;
   padding: 10px;
   text-align: center;
   box-sizing: border-box;
@@ -122,7 +122,7 @@ body {
 .project-info {
   max-width: 1000px;
   text-align: left;
-  margin: 0 auto;
+  margin-left: 100px;
   font-size: 30px;
   line-height: 30px;
 }
@@ -145,4 +145,47 @@ body {
   height: 100vh; /* Make the body fill the viewport height */
 
   padding: 20px; /* Add some padding for spacing */
+}
+.uploadLabel {
+  margin-top: 20px;
+}
+
+.upload {
+  margin-top: 10px;
+}
+
+#algorithmSelect {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 0;
+  font-size: 12px;
+  outline: none;
+  cursor: pointer;
+}
+#algorithmSelect:hover {
+  background-color: #b6b4b4;
+}
+
+/* Styling for dropdown arrow */
+#algorithmSelect {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill="%23444" d="M6 8l4 4 4-4"></path></svg>'); /* SVG arrow */
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
+/* Hover and focus effects for dropdown */
+#algorithmSelect:hover, #algorithmSelect:focus {
+  border-color: #999;
+}
+
+/* Style options */
+#algorithmSelect option {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #fff;
 }

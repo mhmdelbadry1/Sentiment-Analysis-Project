@@ -29,6 +29,7 @@
           cols="30"
           rows="1"
           style="height: 20px"
+        
         ></textarea>
 
         <script>
@@ -39,6 +40,7 @@
             const positiveEmoji = "\uD83D\uDE0A";
             const negativeEmoji = "\uD83D\uDE21";
             const neutralEmoji = "\uD83D\uDE10";
+            const irrelevant = "\U0001F915";
 
             fetch("/analyze/", {
               method: "POST",
@@ -50,10 +52,12 @@
             })
               .then((response) => response.text())
               .then((sentiment) => {
-                if (sentiment == 0) {
+                if (sentiment == "Negative") {
                   sentiment = "Negative Comment" + negativeEmoji;
-                } else if (sentiment == 2) {
+                } else if (sentiment == "Positive") {
                   sentiment = "Positive Comment" + positiveEmoji;
+                } else if (sentiment == "irrelevant") {
+                  sentiment = "irrelevant" + irrelevant;
                 } else {
                   sentiment = "Neutral Comment" + neutralEmoji;
                 }
@@ -67,6 +71,7 @@
           }
 
           function auto_grow(element) {
+              
             element.style.height = "5px";
             if (element.scrollHeight <= 128) {
               element.style.height = element.scrollHeight + "px";
@@ -87,6 +92,12 @@
           <button>browse file</button>
           <input type="file" hidden />
         </div>
+        <label for="algorithmSelect">Select Algorithm:</label>
+<select id="algorithmSelect" onchange="changeAlgorithm()">
+  <option value="knn">KNN</option>
+  <option value="randomForest">Random Forest</option>
+  <option value="naiveBayes">Naive Bayes</option>
+</select>
       </div>
       <p>
         This project was made for my university AIU by my team: Mohamed Elbadry,
